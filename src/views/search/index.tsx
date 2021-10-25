@@ -21,34 +21,26 @@ const View: FC<Props> = (props) => {
   const { site, search } = data
   const title = site?.siteMetadata?.title ?? ''
 
-  return (
-    <>
-      <h1 className="absolute top-[-100px]">{title}</h1>
+  return search == null || site == null ? (
+    <div>...loading</div>
+  ) : (
+    <SearchProvider
+      searchParams={searchParams}
+      pageInfo={{
+        size: ITEMS_PER_PAGE,
+        total: Math.ceil(search.products.pageInfo.totalCount / ITEMS_PER_PAGE),
+      }}
+    >
+      {/* TODO: Move seo components to SSG */}
+      <Seo title={title} site={site} />
 
-      {search == null || site == null ? (
-        <div>...loading</div>
-      ) : (
-        <SearchProvider
-          searchParams={searchParams}
-          pageInfo={{
-            size: ITEMS_PER_PAGE,
-            total: Math.ceil(
-              search.products.pageInfo.totalCount / ITEMS_PER_PAGE
-            ),
-          }}
-        >
-          {/* TODO: Move seo components to SSG */}
-          <Seo title={title} site={site} />
-
-          {/* UI components */}
-          <ProductGallery
-            fallbackData={dynamicData}
-            products={search.products}
-            facets={search.facets}
-          />
-        </SearchProvider>
-      )}
-    </>
+      {/* UI components */}
+      <ProductGallery
+        fallbackData={dynamicData}
+        products={search.products}
+        facets={search.facets}
+      />
+    </SearchProvider>
   )
 }
 
