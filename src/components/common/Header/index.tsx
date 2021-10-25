@@ -3,6 +3,7 @@ import CartToggle from 'src/components/cart/CartToggle'
 
 import Navlinks from './Navlinks'
 import TopAnnouncement from './Announcement'
+import SearchBar from './SearchBar'
 
 function Header() {
   return (
@@ -10,7 +11,10 @@ function Header() {
       <TopAnnouncement message="Selected items on sale! Check them out!" />
       <div className="flex justify-between bg-primary-400">
         <Navlinks />
-        <CartToggle />
+        <div className="flex items-center">
+          <SearchBar />
+          <CartToggle />
+        </div>
       </div>
     </header>
   )
