@@ -3235,14 +3235,15 @@ export type ProductSummary_ProductFragment = {
   name: string
   gtin: string
   id: string
+  brand: { name: string; brandName: string }
   isVariantOf: { productGroupID: string; name: string }
   image: Array<{ url: string; alternateName: string }>
-  brand: { name: string }
   offers: {
     lowPrice: number
     offers: Array<{
       price: number
       listPrice: number
+      quantity: number
       seller: { identifier: string }
     }>
   }
@@ -3475,14 +3476,15 @@ export type SearchQueryQuery = {
           name: string
           gtin: string
           id: string
+          brand: { name: string; brandName: string }
           isVariantOf: { productGroupID: string; name: string }
           image: Array<{ url: string; alternateName: string }>
-          brand: { name: string }
           offers: {
             lowPrice: number
             offers: Array<{
               price: number
               listPrice: number
+              quantity: number
               seller: { identifier: string }
             }>
           }
@@ -3525,14 +3527,15 @@ export type CollectionSearchQueryQuery = {
           name: string
           gtin: string
           id: string
+          brand: { name: string; brandName: string }
           isVariantOf: { productGroupID: string; name: string }
           image: Array<{ url: string; alternateName: string }>
-          brand: { name: string }
           offers: {
             lowPrice: number
             offers: Array<{
               price: number
               listPrice: number
+              quantity: number
               seller: { identifier: string }
             }>
           }
@@ -3682,14 +3685,15 @@ export type FullTextSearchQueryQuery = {
           name: string
           gtin: string
           id: string
+          brand: { name: string; brandName: string }
           isVariantOf: { productGroupID: string; name: string }
           image: Array<{ url: string; alternateName: string }>
-          brand: { name: string }
           offers: {
             lowPrice: number
             offers: Array<{
               price: number
               listPrice: number
+              quantity: number
               seller: { identifier: string }
             }>
           }
