@@ -1,6 +1,6 @@
 import React, { lazy, Suspense } from 'react'
 import Footer from 'src/components/common/Footer'
-import Navbar from 'src/components/common/Navbar'
+import Header from 'src/components/common/Header'
 import { useCartNotificationEffect } from 'src/sdk/cart/useCartNotificationEffect'
 import { useUI } from 'src/sdk/ui'
 import type { PropsWithChildren } from 'react'
@@ -15,7 +15,7 @@ function Layout({ children }: PropsWithChildren<unknown>) {
 
   return (
     <>
-      <Navbar />
+      <Header />
       <main className="min-h-screen">{children}</main>
       <Footer />
       {displayMinicart && (

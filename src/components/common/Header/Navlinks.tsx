@@ -18,7 +18,7 @@ function Navlinks() {
   `)
 
   return (
-    <nav>
+    <nav className="flex items-center h-12">
       <Link className="m-1" to="/">
         <Logo />
       </Link>
