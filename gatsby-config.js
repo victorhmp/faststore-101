@@ -34,9 +34,9 @@ const getSizes = (variants) =>
 
 module.exports = {
   siteMetadata: {
-    title: 'Fashion Store',
-    description: 'Fashion Demo Store',
-    titleTemplate: '%s | Fashion Store',
+    title: 'FastStore 101',
+    description: 'FastStore Demo',
+    titleTemplate: '%s | FastStore',
     author: 'Store Framework',
     siteUrl,
   },
