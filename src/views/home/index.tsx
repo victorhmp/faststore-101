@@ -1,7 +1,7 @@
 import React from 'react'
 import { Carousel, Button } from '@vtex/store-ui'
 import type { Props as PageProps } from 'src/pages/index'
-// import Shelf from 'src/components/product/ProductShelf'
+import Shelf from 'src/components/product/ProductShelf/ProductShelf'
 import 'src/styles/carousel.css'
 
 import Seo from './Seo'
@@ -36,18 +36,19 @@ function View(props: Props) {
           />
         </Carousel>
 
-        {/* <section className="my-3 w-full">
+        <section className="my-3 w-full">
           <h2 className="text-xl text-center">Product Shelf</h2>
           <Shelf
-            params={{
-              first: 5,
+            searchParams={{
+              first: 10,
               after: '0',
               term: '',
               sort: 'score_desc' as const,
               selectedFacets: [{ key: 'c', value: 'women' }],
             }}
+            itemsPerPage={3}
           />
-        </section> */}
+        </section>
 
         <section
           className="w-full flex-wrap flex"
