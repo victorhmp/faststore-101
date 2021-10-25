@@ -1,0 +1,24 @@
+[data-store-carousel] {
+  @apply relative flex items-center;
+  height: 614px;
+}
+
+[data-store-carousel] img {
+  height: 614px;
+}
+
+[data-carousel-bullets] {
+  @apply absolute bottom-0 w-full flex justify-center;
+}
+
+[data-store-button][data-arrow] {
+  @apply bg-transparent absolute text-black;
+}
+
+[data-arrow="left"] {
+  @apply left-0;
+}
+
+[data-arrow="right"] {
+  @apply right-0;
+}
