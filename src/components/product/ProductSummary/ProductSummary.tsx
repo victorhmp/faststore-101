@@ -1,7 +1,7 @@
 import { graphql, Link } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import React, { useMemo } from 'react'
-import Button from 'src/components/ui/Button'
+import { Button } from '@vtex/store-ui'
 import DiscountBadge from 'src/components/ui/DiscountBadge'
 import { useBuyButton } from 'src/sdk/cart/useBuyButton'
 import { useImage } from 'src/sdk/image/useImage'
@@ -50,29 +50,36 @@ function ProductSummary({ product }: Props) {
   })
 
   return (
-    <Link {...linkProps}>
-      <GatsbyImage
-        className="w-full"
-        image={image}
-        alt={img.alternateName}
-        sizes="(max-width: 768px) 200px, 320px"
-      />
-      <div>{name}</div>
-      <div className="flex justify-between">
-        <span
-          data-testid="list-price"
-          data-value={listPrice}
-          className="line-through"
-        >
-          {useFormattedPrice(listPrice)}
-        </span>
-        <span data-testid="price" data-value={spotPrice}>
-          {useFormattedPrice(spotPrice)}
-        </span>
-        <DiscountBadge listPrice={listPrice} spotPrice={spotPrice} />
-      </div>
-      <Button {...buyProps}>Add to cart</Button>
-    </Link>
+    <section style={{ maxWidth: 300 }}>
+      <Link {...linkProps}>
+        <article className="flex flex-col">
+          <div className="relative">
+            <GatsbyImage
+              className="w-full"
+              image={image}
+              alt={img.alternateName}
+              sizes="(max-width: 768px) 200px, 320px"
+            />
+            <DiscountBadge listPrice={listPrice} spotPrice={spotPrice} />
+          </div>
+
+          <div className="text-w">{name}</div>
+          <div className="flex justify-between">
+            <span
+              data-testid="list-price"
+              data-value={listPrice}
+              className="line-through"
+            >
+              {useFormattedPrice(listPrice)}
+            </span>
+            <span data-testid="price" data-value={spotPrice}>
+              {useFormattedPrice(spotPrice)}
+            </span>
+          </div>
+          <Button {...buyProps}>Add to cart</Button>
+        </article>
+      </Link>
+    </section>
   )
 }
 
