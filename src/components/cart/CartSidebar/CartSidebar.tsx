@@ -3,7 +3,7 @@ import { useCart } from 'src/sdk/cart/useCart'
 import { useCartToggleButton } from 'src/sdk/cart/useCartToggleButton'
 import { useCheckoutButton } from 'src/sdk/cart/useCheckoutButton'
 import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
-import Button from 'src/components/ui/Button'
+import { Button } from '@vtex/store-ui'
 
 import CartItem from '../CartItem'
 
