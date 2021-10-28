@@ -49,10 +49,13 @@ function ProductSummary({ product }: Props) {
     },
   })
 
+  const formattedListPrice = useFormattedPrice(listPrice)
+  const formattedSpotPrice = useFormattedPrice(spotPrice)
+
   return (
-    <section style={{ maxWidth: 300 }}>
+    <section style={{ maxWidth: 300, height: 450 }}>
       <Link {...linkProps}>
-        <article className="flex flex-col">
+        <article className="flex flex-col justify-between h-full">
           <div className="relative">
             <GatsbyImage
               className="w-full"
@@ -63,20 +66,36 @@ function ProductSummary({ product }: Props) {
             <DiscountBadge listPrice={listPrice} spotPrice={spotPrice} />
           </div>
 
-          <div className="text-w">{name}</div>
-          <div className="flex justify-between">
+          <h1 className="font-semibold">{name}</h1>
+
+          <div className="flex flex-col">
+            {listPrice !== spotPrice && (
+              <span
+                data-testid="list-price"
+                data-value={listPrice}
+                className="line-through font-light text-gray-400"
+              >
+                {formattedListPrice}
+              </span>
+            )}
             <span
-              data-testid="list-price"
-              data-value={listPrice}
-              className="line-through"
+              className="font-semibold"
+              data-testid="price"
+              data-value={spotPrice}
             >
-              {useFormattedPrice(listPrice)}
-            </span>
-            <span data-testid="price" data-value={spotPrice}>
-              {useFormattedPrice(spotPrice)}
+              {formattedSpotPrice}
             </span>
           </div>
-          <Button {...buyProps}>Add to cart</Button>
+
+          <Button
+            style={{ borderColor: '#134cd8', borderWidth: '0.125rem' }}
+            className="border-solid border-blue-700 border-2 rounded text-white bg-blue-600"
+            {...buyProps}
+          >
+            <div className="flex items-center justify-center py-1">
+              Add to cart
+            </div>
+          </Button>
         </article>
       </Link>
     </section>
