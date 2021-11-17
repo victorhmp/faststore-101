@@ -40,7 +40,7 @@ function View(props: Props) {
           <h2 className="text-xl text-center">Product Shelf</h2>
           <Shelf
             searchParams={{
-              first: 10,
+              first: 9,
               after: '0',
               term: '',
               sort: 'score_desc' as const,

@@ -61,7 +61,7 @@ function ProductShelf({ searchParams, itemsPerPage }: Props) {
             transition: sliderState.sliding ? slidingTransition : undefined,
             width: `${(productCount * 100) / itemsPerPage}%`,
             transform: `translate3d(${
-              transformValues[sliderState.currentPage]
+              transformValues[sliderState.currentPage * itemsPerPage]
             }%, 0, 0)`,
           }}
           onTransitionEnd={() => {
