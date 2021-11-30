@@ -1,0 +1,11 @@
+[data-store-badge] {
+  display: inline-block;
+  color: #ffffff;
+  background-color: #f71963;
+  padding: 0.3rem;
+  border-radius: 0.2rem;
+  font-size: 0.75rem;
+  position: absolute;
+  top: 10px;
+  left: 5px;
+}

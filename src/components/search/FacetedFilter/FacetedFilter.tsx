@@ -2,7 +2,7 @@ import { graphql } from 'gatsby'
 import React, { useState } from 'react'
 import { useSearch } from 'src/sdk/search/useSearch'
 import Checkbox from 'src/components/ui/Checkbox'
-import Button from 'src/components/ui/Button'
+import { Button } from '@vtex/store-ui'
 import type { FacetedFilter_FacetsFragment } from '@generated/graphql'
 
 interface Props {

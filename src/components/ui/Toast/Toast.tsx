@@ -1,4 +1,4 @@
-import Button from 'src/components/ui/Button'
+import { Button } from '@vtex/store-ui'
 import React, { useEffect, useRef } from 'react'
 import { useUI } from 'src/sdk/ui'
 

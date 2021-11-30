@@ -1,7 +1,7 @@
 import { graphql, Link } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import React, { useMemo } from 'react'
-import Button from 'src/components/ui/Button'
+import { Button } from '@vtex/store-ui'
 import DiscountBadge from 'src/components/ui/DiscountBadge'
 import { useBuyButton } from 'src/sdk/cart/useBuyButton'
 import { useImage } from 'src/sdk/image/useImage'
@@ -49,30 +49,56 @@ function ProductSummary({ product }: Props) {
     },
   })
 
+  const formattedListPrice = useFormattedPrice(listPrice)
+  const formattedSpotPrice = useFormattedPrice(spotPrice)
+
   return (
-    <Link {...linkProps}>
-      <GatsbyImage
-        className="w-full"
-        image={image}
-        alt={img.alternateName}
-        sizes="(max-width: 768px) 200px, 320px"
-      />
-      <div>{name}</div>
-      <div className="flex justify-between">
-        <span
-          data-testid="list-price"
-          data-value={listPrice}
-          className="line-through"
-        >
-          {useFormattedPrice(listPrice)}
-        </span>
-        <span data-testid="price" data-value={spotPrice}>
-          {useFormattedPrice(spotPrice)}
-        </span>
-        <DiscountBadge listPrice={listPrice} spotPrice={spotPrice} />
-      </div>
-      <Button {...buyProps}>Add to cart</Button>
-    </Link>
+    <section style={{ maxWidth: 300, height: 450 }}>
+      <Link {...linkProps}>
+        <article className="flex flex-col justify-between h-full">
+          <div className="relative">
+            <GatsbyImage
+              className="w-full"
+              image={image}
+              alt={img.alternateName}
+              sizes="(max-width: 768px) 200px, 320px"
+            />
+            <DiscountBadge listPrice={listPrice} spotPrice={spotPrice} />
+          </div>
+
+          <h1 className="font-semibold">{name}</h1>
+
+          <div className="flex flex-col">
+            {listPrice !== spotPrice && (
+              <span
+                data-testid="list-price"
+                data-value={listPrice}
+                className="line-through font-light text-gray-400"
+              >
+                {formattedListPrice}
+              </span>
+            )}
+            <span
+              className="font-semibold"
+              data-testid="price"
+              data-value={spotPrice}
+            >
+              {formattedSpotPrice}
+            </span>
+          </div>
+
+          <Button
+            style={{ borderColor: '#134cd8', borderWidth: '0.125rem' }}
+            className="border-solid border-blue-700 border-2 rounded text-white bg-blue-600"
+            {...buyProps}
+          >
+            <div className="flex items-center justify-center py-1">
+              Add to cart
+            </div>
+          </Button>
+        </article>
+      </Link>
+    </section>
   )
 }
 
